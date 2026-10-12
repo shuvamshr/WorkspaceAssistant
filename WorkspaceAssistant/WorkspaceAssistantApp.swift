@@ -1,21 +1,24 @@
+import BoardFeature
 import DesignSystem
 import SwiftUI
-import WorkspaceDomain
 
-/// App entry point and composition root.
+/// App entry point. Owns the composition root and injects dependencies into the environment.
 @main
 struct WorkspaceAssistantApp: App {
-    private let arguments = ProcessInfo.processInfo.arguments
+    @State private var dependencies = AppDependencies()
 
     var body: some Scene {
         WindowGroup {
-            if arguments.contains("-DesignGallery") {
+            if dependencies.launch.showsDesignGallery {
                 DesignGallery()
-                    .dynamicTypeSize(arguments.contains("-GalleryAX5") ? .accessibility5 : .large)
-                    .environment(\.layoutDirection, arguments.contains("-GalleryRTL") ? .rightToLeft : .leftToRight)
             } else {
-                Text("Workspace")
+                RootView()
+                    .environment(dependencies.board)
+                    .environment(dependencies.router)
             }
+        }
+        .commands {
+            AppCommands(board: dependencies.board, router: dependencies.router)
         }
     }
 }
