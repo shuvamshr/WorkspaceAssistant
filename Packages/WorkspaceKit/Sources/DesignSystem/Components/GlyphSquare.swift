@@ -52,6 +52,7 @@ public struct GlyphSquare: View {
             .foregroundStyle(color.foreground)
             .frame(width: side, height: side)
             .background(color.background(contrast: contrast), in: RoundedRectangle(cornerRadius: size.cornerRadius * side / size.points, style: .continuous))
+            .accessibilityIgnoresInvertColors()
             .accessibilityHidden(true)
     }
 }

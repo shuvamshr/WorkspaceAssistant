@@ -24,7 +24,6 @@ public struct AvailabilityBanner: View {
                 Text(title).font(.subheadline.weight(.semibold))
                 Text(message)
                     .font(.footnote)
-                    .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
                 if let actionTitle, let action {
                     Button(actionTitle, action: action)

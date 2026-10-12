@@ -1,7 +1,54 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ A simple rule-based assistant is standing in." : {
 
+    },
+    "Apple Intelligence" : {
+
+    },
+    "Apple Intelligence doesn’t support your language yet." : {
+
+    },
+    "Apple Intelligence is still getting ready." : {
+
+    },
+    "Apple Intelligence is turned off in Settings." : {
+
+    },
+    "Apple Intelligence isn’t available on this device." : {
+
+    },
+    "Ask Assistant" : {
+
+    },
+    "Assistant" : {
+
+    },
+    "Collections" : {
+
+    },
+    "Layout" : {
+
+    },
+    "New Task" : {
+
+    },
+    "Search" : {
+
+    },
+    "Simulated" : {
+
+    },
+    "Tasks" : {
+
+    },
+    "The assistant runs on device with Apple Intelligence." : {
+
+    },
+    "The simulated assistant is on for testing." : {
+
+    }
   },
   "version" : "1.0"
 }

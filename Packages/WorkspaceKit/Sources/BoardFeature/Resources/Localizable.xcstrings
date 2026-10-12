@@ -1,7 +1,117 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-
+  "sourceLanguage": "en",
+  "strings": {
+    "%@ Copy": {},
+    "%lld Selected": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Selected"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Selected"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Add": {},
+    "Add Step": {},
+    "Add Task": {},
+    "Add a task, or ask the assistant to create one.": {},
+    "Add notes": {},
+    "Added by Assistant": {},
+    "Appearance": {},
+    "Backlog": {},
+    "Category": {},
+    "Change Accent Colour": {},
+    "Change Appearance": {},
+    "Change Density": {},
+    "Change Layout": {},
+    "Changes the tile colour and glyph": {},
+    "Check Step": {},
+    "Choose Tasks…": {},
+    "Collections": {},
+    "Complete": {},
+    "Completed": {},
+    "Completed tasks appear here.": {},
+    "Created %@": {},
+    "Delete": {},
+    "Delete %lld Tasks?": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Delete %lld Task?"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Delete %lld Tasks?"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Delete Step": {},
+    "Details": {},
+    "Done": {},
+    "Drop tasks here": {},
+    "Duplicate": {},
+    "Edit": {},
+    "Edit Appearance": {},
+    "Edit Task": {},
+    "Everything Else": {},
+    "High Priority": {},
+    "Layout": {},
+    "Manual": {},
+    "More": {},
+    "Move": {},
+    "Move Step": {},
+    "Move to…": {},
+    "New Task": {},
+    "Newest First": {},
+    "No Priority Tasks": {},
+    "No Tasks": {},
+    "Notes": {},
+    "Nothing Done Yet": {},
+    "Prioritise": {},
+    "Prioritise a task to see it here.": {},
+    "Prioritise the tasks that matter most and they’ll appear here.": {},
+    "Priority": {},
+    "Remove Priority": {},
+    "Rename Step": {},
+    "Reopen": {},
+    "Search": {},
+    "Select": {},
+    "Settings": {},
+    "Share": {},
+    "Sort By": {},
+    "Step": {},
+    "Steps": {},
+    "Task Deleted": {},
+    "Tasks": {},
+    "Title": {},
+    "Titles, notes and steps": {},
+    "Toggle Priority": {},
+    "Use Category Default": {},
+    "View Options": {},
+    "You can undo this with Undo or by shaking your device.": {}
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

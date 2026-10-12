@@ -34,6 +34,8 @@ public struct AssistantPanel: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // Opaque content layer so transcript text never sits over the board showing through the glass sheet.
+        .background(Color(.systemGroupedBackground))
         .safeAreaInset(edge: .bottom) {
             ComposerBar(
                 text: $model.draft,

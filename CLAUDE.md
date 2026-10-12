@@ -30,3 +30,9 @@ Rules for future sessions. The full build brief lives with the project owner; th
 - No warnings, no force unwraps outside tests, no `print` (use `Logger`). One primary type per file; doc comment on public types.
 - After each change: build and run tests on an iPhone simulator; report honestly.
 - Strings in package modules use `bundle: .module` and the module's `Localizable.xcstrings`.
+
+## Current focus & workflow notes
+- **iPhone only for now.** iPad code (sidebar sections, inspector) exists but isn't actively tested; don't spend effort on iPad review unless asked.
+- Use a dedicated simulator you boot yourself for manual runs — the owner may be using other booted simulators.
+- `AccessibilityAuditTests` runs Xcode's accessibility audit; accepted exceptions are listed in the test and in `docs/accessibility.md`.
+- After command-line builds, run `scripts/sync-strings.sh` to update the String Catalogs.

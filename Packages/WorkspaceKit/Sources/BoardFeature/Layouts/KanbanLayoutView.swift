@@ -73,7 +73,7 @@ struct KanbanColumnView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: scrolls ? .infinity : nil, alignment: .top)
         .padding(Spacing.s)
-        .background(isTargeted ? AnyShapeStyle(.tint.opacity(0.12)) : AnyShapeStyle(Color(.secondarySystemGroupedBackground).opacity(0.6)), in: Radius.blockShape)
+        .background(isTargeted ? AnyShapeStyle(.tint.opacity(0.12)) : AnyShapeStyle(Color(.secondarySystemGroupedBackground)), in: Radius.blockShape)
         .dropDestination(for: TaskDragItem.self) { items, _ in
             for item in items { withAnimation(.smooth) { model.drop(item.id, into: column) } }
             return !items.isEmpty

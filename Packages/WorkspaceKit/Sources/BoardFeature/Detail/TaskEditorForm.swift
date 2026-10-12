@@ -16,6 +16,7 @@ struct TaskEditorForm: View {
     @State private var notes = ""
     @State private var newStep = ""
     @FocusState private var focus: Field?
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         List {
@@ -34,11 +35,11 @@ struct TaskEditorForm: View {
                 .pickerStyle(.menu)
 
                 Toggle(isOn: Binding(get: { task.isHighPriority }, set: { apply(.priority($0 ? .high : .normal)) })) {
-                    Label { Text("High Priority", bundle: .module) } icon: { Image(systemName: task.isHighPriority ? "star.fill" : "star") }
+                    Label { Text("High Priority", bundle: .module).fixedSize(horizontal: false, vertical: true) } icon: { Image(systemName: task.isHighPriority ? "star.fill" : "star") }
                 }
 
                 Toggle(isOn: Binding(get: { task.isDone }, set: { apply(.status($0 ? .done : .open)) })) {
-                    Label { Text("Completed", bundle: .module) } icon: { Image(systemName: task.isDone ? "checkmark.circle.fill" : "circle") }
+                    Label { Text("Completed", bundle: .module).fixedSize(horizontal: false, vertical: true) } icon: { Image(systemName: task.isDone ? "checkmark.circle.fill" : "circle") }
                 }
             } header: {
                 Text("Details", bundle: .module)
@@ -115,7 +116,11 @@ struct TaskEditorForm: View {
     }
 
     private var header: some View {
-        HStack(alignment: .center, spacing: Spacing.m) {
+        // At accessibility sizes the glyph sits above the title so the title gets the full width.
+        let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(alignment: .leading, spacing: Spacing.s))
+            : AnyLayout(HStackLayout(alignment: .center, spacing: Spacing.m))
+        return layout {
             Button(action: onEditAppearance) {
                 GlyphSquare(task.resolvedAppearance, size: .large)
             }

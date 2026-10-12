@@ -28,6 +28,8 @@ public struct TaskDetailView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        // The editor gets the full screen; nothing is layered under the tab bar while editing.
+        .toolbar(.hidden, for: .tabBar)
         .background(Color(.systemGroupedBackground))
         .onChange(of: model.store.task(id: taskID) == nil) { _, isGone in
             if isGone { onDeleted() }

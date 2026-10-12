@@ -7,6 +7,7 @@ public struct TaskRow: View {
     private let density: ListDensity
     private let highlightTrigger: UUID?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     public init(task: TaskItem, density: ListDensity = .comfortable, highlightTrigger: UUID? = nil) {
         self.task = task
@@ -24,12 +25,12 @@ public struct TaskRow: View {
                     .font(density == .compact ? .subheadline : .body)
                     .strikethrough(task.isDone)
                     .foregroundStyle(task.isDone ? .secondary : .primary)
-                    .lineLimit(density == .compact ? 1 : 2)
+                    .lineLimit(dynamicTypeSize > .large ? nil : (density == .compact ? 1 : 2))
                 if density == .comfortable {
                     Text(task.tileCaption)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                        .lineLimit(1)
+                        .lineLimit(dynamicTypeSize > .large ? nil : 1)
                 }
             }
             Spacer(minLength: Spacing.xs)

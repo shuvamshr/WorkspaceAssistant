@@ -22,10 +22,10 @@ public struct AskAssistantAccessory: View {
                 if model.simulationReason != nil {
                     Text("Simulated", bundle: .module)
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.primary)
                         .padding(.horizontal, Spacing.xs)
                         .padding(.vertical, 2)
-                        .background(.fill.tertiary, in: Capsule())
+                        .background(Color(.tertiarySystemFill), in: Capsule())
                 }
             }
             .padding(.horizontal, Spacing.m)

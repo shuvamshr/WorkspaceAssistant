@@ -1,7 +1,237 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Add a priority task for code review" : {
 
+    },
+    "Add step" : {
+
+    },
+    "Add task" : {
+
+    },
+    "Already set — nothing changed." : {
+
+    },
+    "Apple Intelligence doesn’t support your current language yet." : {
+
+    },
+    "Apple Intelligence is still getting ready. The full assistant will be available once the model finishes downloading." : {
+
+    },
+    "Apple Intelligence is turned off. Turn it on in Settings to use the full assistant." : {
+
+    },
+    "Apple Intelligence isn’t available on this device." : {
+
+    },
+    "Ask Assistant" : {
+
+    },
+    "Ask Assistant…" : {
+
+    },
+    "Ask me to organise your workspace" : {
+
+    },
+    "Assistant" : {
+
+    },
+    "Assistant added %@" : {
+
+    },
+    "Assistant added step %@ to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Assistant added step %1$@ to %2$@"
+          }
+        }
+      }
+    },
+    "Assistant coloured %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Assistant coloured %1$@ %2$@"
+          }
+        }
+      }
+    },
+    "Assistant completed %@" : {
+
+    },
+    "Assistant couldn’t complete the action. %@" : {
+
+    },
+    "Assistant deleted %@. You can undo this." : {
+
+    },
+    "Assistant is working…" : {
+
+    },
+    "Assistant looked up tasks matching %@" : {
+
+    },
+    "Assistant prioritised %@" : {
+
+    },
+    "Assistant removed priority from %@" : {
+
+    },
+    "Assistant set the accent colour to %@" : {
+
+    },
+    "Assistant switched layout to %@" : {
+
+    },
+    "Assistant: %@" : {
+
+    },
+    "Change the accent colour to green" : {
+
+    },
+    "Clear Conversation" : {
+
+    },
+    "Clear the conversation?" : {
+
+    },
+    "Colour" : {
+
+    },
+    "Complete" : {
+
+    },
+    "Conversation Options" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Find tasks matching" : {
+
+    },
+    "High" : {
+
+    },
+    "I can prioritise, add, complete and recolour tasks, or change the layout." : {
+
+    },
+    "I can’t help with that request. Try rephrasing it as something to do with your tasks." : {
+
+    },
+    "I can’t help with that. I can organise, add, complete and prioritise your tasks." : {
+
+    },
+    "I don’t support this language yet. Try writing in a language Apple Intelligence supports." : {
+
+    },
+    "It understands short, simple requests." : {
+
+    },
+    "I’m getting a lot of requests right now. Wait a moment and try again." : {
+
+    },
+    "I’m still working on your last request." : {
+
+    },
+    "No task matches “%@”." : {
+
+    },
+    "Normal" : {
+
+    },
+    "Open Settings" : {
+
+    },
+    "Prioritise" : {
+
+    },
+    "Prioritise all testing tasks and use List view" : {
+
+    },
+    "Prioritise the network refactor and switch to Focus" : {
+
+    },
+    "Remove priority from" : {
+
+    },
+    "Set accent colour to" : {
+
+    },
+    "Show my tasks as a Board" : {
+
+    },
+    "Shows this task on the board" : {
+
+    },
+    "Simulated" : {
+
+    },
+    "Simulated assistant" : {
+
+    },
+    "Something went wrong, and nothing was changed. Please try again." : {
+
+    },
+    "Stopped" : {
+
+    },
+    "Suggestions" : {
+
+    },
+    "Switch layout to" : {
+
+    },
+    "That took too long. Please try again." : {
+
+    },
+    "The change couldn’t be made." : {
+
+    },
+    "The on-device model isn’t ready yet. Try again in a little while." : {
+
+    },
+    "The simulated assistant is turned on for testing." : {
+
+    },
+    "The title was empty." : {
+
+    },
+    "This conversation got too long, so I started a fresh one and kept a short summary. Please send that again." : {
+
+    },
+    "Undo" : {
+
+    },
+    "You: %@" : {
+
+    },
+    "Your tasks and layout won’t change." : {
+
+    },
+    "as" : {
+
+    },
+    "in" : {
+
+    },
+    "to" : {
+
+    },
+    "“%@” matches %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "“%1$@” matches %2$@."
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }

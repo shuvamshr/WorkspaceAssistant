@@ -9,9 +9,13 @@ extension TileColor {
     public var foreground: Color { .white }
 
     /// The tile background style, respecting Increase Contrast.
-    public func background(contrast: ColorSchemeContrast) -> AnyShapeStyle {
+    /// - Parameter solid: Use the base colour without a gradient (for short tiles whose text sits near the top).
+    public func background(contrast: ColorSchemeContrast, solid: Bool = false) -> AnyShapeStyle {
         if contrast == .increased {
             return AnyShapeStyle(TilePalette.highContrast(self).color)
+        }
+        if solid {
+            return AnyShapeStyle(TilePalette.base(self).color)
         }
         return AnyShapeStyle(
             LinearGradient(

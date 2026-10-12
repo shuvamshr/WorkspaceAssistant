@@ -22,6 +22,7 @@ public struct TaskTile: View {
 
     @Environment(\.colorSchemeContrast) private var contrast
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .headline) private var regularMinHeight: CGFloat = 116
     @ScaledMetric(relativeTo: .headline) private var largeMinHeight: CGFloat = 140
     @ScaledMetric(relativeTo: .subheadline) private var miniMinHeight: CGFloat = 60
@@ -45,7 +46,7 @@ public struct TaskTile: View {
             .frame(maxWidth: .infinity, minHeight: minHeight, alignment: .topLeading)
             .background {
                 Radius.tileShape
-                    .fill(appearance.color.background(contrast: contrast))
+                    .fill(appearance.color.background(contrast: contrast, solid: size == .mini))
                     .grayscale(task.isDone ? 0.9 : 0)
             }
             .overlay(alignment: .topTrailing) { selectionIndicator }
@@ -66,6 +67,11 @@ public struct TaskTile: View {
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(task.accessibilitySummary)
             .accessibilityAddTraits(isSelected == true ? .isSelected : [])
+    }
+
+    /// Line limits apply at standard text sizes; larger sizes let text wrap fully instead of truncating.
+    private func lineLimit(_ standard: Int) -> Int? {
+        dynamicTypeSize > .large ? nil : standard
     }
 
     private var minHeight: CGFloat {
@@ -104,11 +110,11 @@ public struct TaskTile: View {
             Spacer(minLength: Spacing.s)
             Text(task.title)
                 .font(.headline)
-                .lineLimit(3)
+                .lineLimit(lineLimit(3))
                 .multilineTextAlignment(.leading)
             Text(task.tileCaption)
                 .font(.caption.weight(.medium))
-                .lineLimit(1)
+                .lineLimit(lineLimit(1))
         }
         .padding(Spacing.s)
     }
@@ -125,7 +131,7 @@ public struct TaskTile: View {
                 VStack(alignment: .leading, spacing: Spacing.xxs) {
                     Text(task.title)
                         .font(.title3.bold())
-                        .lineLimit(2)
+                        .lineLimit(lineLimit(2))
                         .multilineTextAlignment(.leading)
                     Text(largeDetail)
                         .font(.subheadline.weight(.medium))
@@ -155,7 +161,7 @@ public struct TaskTile: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(task.title)
                     .font(.subheadline.weight(.semibold))
-                    .lineLimit(2)
+                    .lineLimit(lineLimit(2))
                     .multilineTextAlignment(.leading)
                 TaskBadges(task: task).font(.caption2.weight(.bold))
             }
