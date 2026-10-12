@@ -6,4 +6,6 @@ import Observation
 final class AppRouter {
     var tab: AppTab = .tasks
     var searchQuery = ""
+    /// Whether the assistant sheet (iPhone) or inspector (iPad) is showing.
+    var isShowingAssistant = false
 }

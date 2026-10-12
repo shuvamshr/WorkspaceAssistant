@@ -69,7 +69,7 @@ let package = Package(
         .testTarget(name: "BoardFeatureTests", dependencies: ["BoardFeature", "WorkspaceDomain"], swiftSettings: uiSettings),
         .testTarget(
             name: "AssistantFeatureTests",
-            dependencies: ["AssistantFeature", "WorkspaceDomain"],
+            dependencies: ["AssistantFeature", "DesignSystem", "WorkspaceDomain"],
             swiftSettings: uiSettings
         ),
     ],

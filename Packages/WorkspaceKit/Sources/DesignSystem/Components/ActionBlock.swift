@@ -1,18 +1,20 @@
 import SwiftUI
 import WorkspaceDomain
 
+/// A piece of an action block's sentence.
+public enum ActionBlockPart: Hashable, Sendable {
+    /// The leading verb, drawn in bold ("Prioritise").
+    case verb(String)
+    /// Plain connecting text ("to").
+    case text(String)
+    /// A parameter, drawn as a token pill.
+    case token(String)
+}
+
 /// A Shortcuts-editor-style action card: coloured glyph square, a verb, and inline token pills.
 /// Used to show exactly what the assistant did.
 public struct ActionBlock<Accessory: View>: View {
-    /// A piece of the action's sentence.
-    public enum Part: Hashable, Sendable {
-        /// The leading verb, drawn in bold ("Prioritise").
-        case verb(String)
-        /// Plain connecting text ("to").
-        case text(String)
-        /// A parameter, drawn as a token pill.
-        case token(String)
-    }
+    public typealias Part = ActionBlockPart
 
     private let glyph: String
     private let color: TileColor

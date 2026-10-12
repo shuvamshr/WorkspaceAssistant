@@ -1,3 +1,4 @@
+import AssistantFeature
 import BoardFeature
 import DesignSystem
 import SwiftUI
@@ -15,10 +16,11 @@ struct WorkspaceAssistantApp: App {
                 RootView()
                     .environment(dependencies.board)
                     .environment(dependencies.router)
+                    .environment(dependencies.assistant)
             }
         }
         .commands {
-            AppCommands(board: dependencies.board, router: dependencies.router)
+            AppCommands(board: dependencies.board, assistant: dependencies.assistant, router: dependencies.router)
         }
     }
 }

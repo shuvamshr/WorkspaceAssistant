@@ -1,6 +1,8 @@
+import AssistantFeature
 import BoardFeature
 import Foundation
 import os
+import WorkspaceAgent
 import WorkspaceDomain
 import WorkspacePersistence
 
@@ -9,6 +11,7 @@ import WorkspacePersistence
 final class AppDependencies {
     let store: WorkspaceStore
     let board: BoardModel
+    let assistant: AssistantModel
     let router = AppRouter()
     let launch: LaunchConfiguration
 
@@ -31,5 +34,10 @@ final class AppDependencies {
         store = WorkspaceStore(repository: repository, preferencesStore: preferences)
         store.undoActionName = UndoActionNames.name(for:)
         board = BoardModel(store: store)
+
+        let engine: any AssistantEngine = launch.isUITest
+            ? ScriptedEngine(executor: store, reason: .simulatedByConfiguration, wordDelay: .zero)
+            : AutomaticAssistantEngine(executor: store)
+        assistant = AssistantModel(engine: engine)
     }
 }

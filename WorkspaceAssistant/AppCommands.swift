@@ -1,3 +1,4 @@
+import AssistantFeature
 import BoardFeature
 import DesignSystem
 import SwiftUI
@@ -6,6 +7,7 @@ import WorkspaceDomain
 /// Keyboard shortcuts and menu-bar commands (iPad hardware keyboard).
 struct AppCommands: Commands {
     let board: BoardModel
+    let assistant: AssistantModel
     let router: AppRouter
 
     var body: some Commands {
@@ -16,6 +18,13 @@ struct AppCommands: Commands {
         CommandGroup(after: .textEditing) {
             Button("Search") { router.tab = .search }
                 .keyboardShortcut("f")
+        }
+        CommandMenu("Assistant") {
+            Button("Ask Assistant") {
+                router.isShowingAssistant = true
+                assistant.requestFocus()
+            }
+            .keyboardShortcut("k")
         }
         CommandMenu("Layout") {
             ForEach(Array(BoardLayout.allCases.enumerated()), id: \.element) { index, layout in
