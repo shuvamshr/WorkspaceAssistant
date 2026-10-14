@@ -15,12 +15,12 @@ something like it yourself**.
 
 | Topic | Where to look |
 |---|---|
-| SwiftUI app structure, `TabView`, sheets, navigation | `WorkspaceAssistant/App/` |
-| Observation (`@Observable`) for app state | `Domain/Store/WorkspaceStore.swift`, `Features/*/Model/` |
-| SwiftData for saving data | `Persistence/` |
-| Foundation Models: sessions, streaming, **tool calling** | `Agent/` |
+| SwiftUI app structure, `TabView`, sheets, navigation | `WorkspaceAssistantApp.swift`, `Views/Root/` |
+| MVVM with Observation (`@Observable`) | `ViewModels/`, `Domain/Store/WorkspaceStore.swift` |
+| SwiftData for saving data | `Domain/Services/Persistence/` |
+| Foundation Models: sessions, streaming, **tool calling** | `Domain/Services/Assistant/` |
 | Undo/redo with `UndoManager` | `Domain/Store/WorkspaceStore.swift` |
-| Reusable UI components and a small design system | `DesignSystem/` |
+| Reusable UI components and a small design system | `Views/Shared/` |
 | Accessibility (VoiceOver, Dynamic Type, contrast) | everywhere — see `docs/accessibility.md` |
 | Unit tests with Swift Testing, UI tests with XCTest | `WorkspaceAssistantTests/`, `WorkspaceAssistantUITests/` |
 
@@ -58,7 +58,7 @@ Whether you tap the ★ button or the AI decides to prioritise a task, the same 
    You tap ★                     AI calls a tool
        │                               │
        ▼                               ▼
-  BoardModel.togglePriority     SetTaskPriorityTool.call
+  BoardViewModel.togglePriority SetTaskPriorityTool.call
        │                               │
        └──────────────┬────────────────┘
                       ▼
@@ -79,7 +79,7 @@ Why this matters:
 - **Adding a feature** = add a command case, handle it in the store, optionally add a tool for the AI.
 
 Open these two files side by side and read them — they are the heart of the app:
-- [`WorkspaceCommand.swift`](WorkspaceAssistant/Domain/Commands/WorkspaceCommand.swift) — the list of every possible change.
+- [`WorkspaceCommand.swift`](WorkspaceAssistant/Domain/Models/WorkspaceCommand.swift) — the list of every possible change.
 - [`WorkspaceStore.swift`](WorkspaceAssistant/Domain/Store/WorkspaceStore.swift) — applies commands, saves, and registers undo.
 
 ---
@@ -93,7 +93,7 @@ Foundation Models gives you an on-device language model. On its own it can only 
 
 When you type *"prioritise the network refactor"*:
 
-1. **`AssistantModel`** (the assistant screen's state) sends the text to the engine.
+1. **`AssistantViewModel`** (the assistant screen's view model) sends the text to the engine.
 2. **`FoundationModelsEngine`** passes it to a long-lived `LanguageModelSession` that was created with the app's tools.
    Keeping one session means the model **remembers the conversation**, so follow-ups like "now undo that" make sense.
 3. The model decides to call **`setTaskPriority`** with arguments `query: "network refactor", priority: high`.
@@ -131,39 +131,57 @@ struct SetTaskPriorityTool: Tool {
 
 | File | What it shows |
 |---|---|
-| [`Agent/Tools/WorkspaceTools.swift`](WorkspaceAssistant/Agent/Tools/WorkspaceTools.swift) | All nine tools as thin adapters |
-| [`Agent/Toolbox/WorkspaceToolbox.swift`](WorkspaceAssistant/Agent/Toolbox/WorkspaceToolbox.swift) | The logic behind the tools, with honest results |
-| [`Agent/FoundationModels/FoundationModelsEngine.swift`](WorkspaceAssistant/Agent/FoundationModels/FoundationModelsEngine.swift) | Session, streaming, cancelling, error handling |
-| [`Agent/FoundationModels/AssistantInstructions.swift`](WorkspaceAssistant/Agent/FoundationModels/AssistantInstructions.swift) | The system prompt (short and specific works best) |
-| [`Agent/Scripted/ScriptedEngine.swift`](WorkspaceAssistant/Agent/Scripted/ScriptedEngine.swift) | The simulated assistant, using the *same* toolbox |
+| [`Tools/WorkspaceTools.swift`](WorkspaceAssistant/Domain/Services/Assistant/Tools/WorkspaceTools.swift) | All nine tools as thin adapters |
+| [`Toolbox/WorkspaceToolbox.swift`](WorkspaceAssistant/Domain/Services/Assistant/Toolbox/WorkspaceToolbox.swift) | The logic behind the tools, with honest results |
+| [`FoundationModels/FoundationModelsEngine.swift`](WorkspaceAssistant/Domain/Services/Assistant/FoundationModels/FoundationModelsEngine.swift) | Session, streaming, cancelling, error handling |
+| [`FoundationModels/AssistantInstructions.swift`](WorkspaceAssistant/Domain/Services/Assistant/FoundationModels/AssistantInstructions.swift) | The system prompt (short and specific works best) |
+| [`Scripted/ScriptedEngine.swift`](WorkspaceAssistant/Domain/Services/Assistant/Scripted/ScriptedEngine.swift) | The simulated assistant, using the *same* toolbox |
 
-Both engines follow the same `AssistantEngine` protocol (`Domain/Assistant/AssistantEngine.swift`), so the UI doesn't
+Both engines follow the same `AssistantEngine` protocol (`Domain/Store/AssistantEngine.swift`), so the UI doesn't
 care which one it's talking to. `AutomaticAssistantEngine` picks the real one when Apple Intelligence is available.
 
 ---
 
 ## 5. Project map
 
+The app follows **MVVM** (Model–View–ViewModel), with three top-level folders:
+
 ```
 WorkspaceAssistant/
-  App/                 Start here: @main app, creates everything and wires it together (AppDependencies)
-  Domain/              Plain Swift — models (TaskItem), commands, the store, protocols. No UI code.
-  Persistence/         Saving tasks with SwiftData; preferences with UserDefaults
-  Agent/               The AI: Foundation Models engine, tools, simulated assistant
-  DesignSystem/        Colours, spacing, and reusable views (TaskTile, ActionBlock, ComposerBar…)
-  Features/
-    Board/             The task board: 4 layouts, task editor, search, collections
-    Assistant/         The chat: transcript, action blocks, composer, suggestions
-    Settings/          Settings screen
-  Resources/           App icon, colours, and all text (Localizable.xcstrings)
-WorkspaceAssistantTests/     Unit tests (Swift Testing) — mirror the folders above
-WorkspaceAssistantUITests/   UI tests, including automated accessibility audits
-docs/                        Accessibility report and app icon files
-scripts/                     Helper scripts (sync strings, render the icon)
+  WorkspaceAssistantApp.swift   Start here: the @main app
+  AppDependencies.swift         Creates the store, services and view models, and wires them together
+  LaunchConfiguration.swift     Test/debug launch switches
+
+  Domain/                       The "Model" in MVVM — plain Swift, no UI code
+    Models/                     Data types: TaskItem, WorkspaceCommand, ToolActivity…
+    Store/                      WorkspaceStore (the single source of truth), task matching, protocols
+    Services/
+      Persistence/              Saving tasks with SwiftData; preferences with UserDefaults
+      Assistant/                The AI: Foundation Models engine, tools, simulated assistant
+
+  ViewModels/                   Screen state and actions, used by the views
+    BoardViewModel.swift        Board: selection, sorting, task actions
+    AssistantViewModel.swift    Assistant chat: messages, sending, cancelling
+    AppRouter.swift             Which tab / sheet is showing
+    Board/  Assistant/  Settings/   Small helper types for each view model
+
+  Views/                        SwiftUI views, one folder per page
+    Root/                       Tab bar and keyboard shortcuts
+    Board/                      The task board, its 4 layouts and tile cells
+    TaskDetail/                 Task editor and new-task sheet
+    Collections/  Search/  Assistant/  Settings/
+    Shared/                     Reusable components, styles (colours, spacing), previews
+
+  Resources/                    App icon, colours, and all text (Localizable.xcstrings)
+WorkspaceAssistantTests/        Unit tests — Domain, Services, ViewModels, Views
+WorkspaceAssistantUITests/      UI tests, including automated accessibility audits
+docs/                           Accessibility report and app icon files
+scripts/                        Helper scripts (sync strings, render the icon)
 ```
 
-**Layers depend inwards:** Features and Agent use Domain; Domain uses nothing app-specific. Only `Agent/` imports
-FoundationModels and only `Persistence/` imports SwiftData. Keeping it this way makes each part easy to test and swap.
+**How the layers talk:** Views read from and call their **ViewModel**; ViewModels issue `WorkspaceCommand`s to the
+**store** in `Domain/`; the store saves through a **service**. Only `Domain/Services/Assistant/` imports
+FoundationModels and only `Domain/Services/Persistence/` imports SwiftData, so each part is easy to test and swap.
 
 ---
 
@@ -187,7 +205,7 @@ You don't need to build everything at once. Each step gives you a working app.
 
 **Step 4 — Save data (SwiftData)**
 - Create a `@Model` class for storage and save after each command. Load on launch.
-- Tip: keep your `TaskItem` struct for the UI and convert to/from the `@Model` — see `Persistence/TaskRecord.swift`.
+- Tip: keep your `TaskItem` struct for the UI and convert to/from the `@Model` — see `Domain/Services/Persistence/TaskRecord.swift`.
 
 **Step 5 — Make it look good**
 - Build a reusable `TaskTile` view. Use only Dynamic Type text styles (`.headline`, `.caption`…).
