@@ -70,7 +70,7 @@ Legend: ✅ verified · 🔍 verified by code review only · ⚠️ known limita
 - 🔍 Pointer: tiles use `.hoverEffect(.lift)`; rows and buttons use the system hover effects.
 
 ### Localisation
-- ✅ String Catalogs are populated (215 keys across modules) with English plural rules for counted strings.
+- ✅ The String Catalog is populated (191 keys) with English plural rules for counted strings.
   Run `scripts/sync-strings.sh` after command-line builds; Xcode syncs them automatically when building in the IDE.
 - ✅ RTL layouts render correctly (design-system gallery reviewed in dark + RTL).
 - ⚠️ The simulated assistant's replies are English-only. The real model replies in the user's language.
@@ -82,4 +82,5 @@ Legend: ✅ verified · 🔍 verified by code review only · ⚠️ known limita
 4. Editor title squeezed beside the glyph at accessibility sizes → stacked header.
 5. Editor content under the floating tab bar → tab bar hidden while editing.
 6. Simulated-assistant banner and Board column used translucent fills → opaque fills; banner text uses the primary colour.
-7. iPad inspector reopened on launch (system restoration) → presentation bindings accept dismissals only.
+7. iPad inspector reopened on launch (system restoration) → fixed, later removed when the app went iPhone-only.
+8. "Ask Assistant…" pill and the editor's "Created…" footer were borderline grey → primary colour; the editor audit now waits for its push transition.

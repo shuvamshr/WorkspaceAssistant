@@ -1,0 +1,284 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "%@ A simple rule-based assistant is standing in.": {},
+    "%@ Copy": {},
+    "%lld Selected": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Selected"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Selected"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld of %lld steps done": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld of %2$lld steps done"
+          }
+        }
+      }
+    },
+    "%lld/%lld steps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld/%2$lld steps"
+          }
+        }
+      }
+    },
+    "AA": {},
+    "About": {},
+    "Accent Colour": {},
+    "Add": {},
+    "Add Step": {},
+    "Add Task": {},
+    "Add a priority task for code review": {},
+    "Add a task, or ask the assistant to create one.": {},
+    "Add notes": {},
+    "Add step": {},
+    "Add task": {},
+    "Added by Assistant": {},
+    "Already set — nothing changed.": {},
+    "Appearance": {},
+    "Apple Intelligence": {},
+    "Apple Intelligence doesn’t support your current language yet.": {},
+    "Apple Intelligence doesn’t support your language yet.": {},
+    "Apple Intelligence is still getting ready.": {},
+    "Apple Intelligence is still getting ready. The full assistant will be available once the model finishes downloading.": {},
+    "Apple Intelligence is turned off in Settings.": {},
+    "Apple Intelligence is turned off. Turn it on in Settings to use the full assistant.": {},
+    "Apple Intelligence isn’t available on this device.": {},
+    "Ask Assistant": {},
+    "Ask Assistant…": {},
+    "Ask me to organise your workspace": {},
+    "Assistant": {},
+    "Assistant added %@": {},
+    "Assistant added step %@ to %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Assistant added step %1$@ to %2$@"
+          }
+        }
+      }
+    },
+    "Assistant coloured %@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Assistant coloured %1$@ %2$@"
+          }
+        }
+      }
+    },
+    "Assistant completed %@": {},
+    "Assistant couldn’t complete the action. %@": {},
+    "Assistant deleted %@. You can undo this.": {},
+    "Assistant is working…": {},
+    "Assistant looked up tasks matching %@": {},
+    "Assistant prioritised %@": {},
+    "Assistant removed priority from %@": {},
+    "Assistant set the accent colour to %@": {},
+    "Assistant switched layout to %@": {},
+    "Assistant: %@": {},
+    "Backlog": {},
+    "Base = text background; Top = glyph background (needs 3:1); HC = Increase Contrast.": {},
+    "Blue": {},
+    "Board": {},
+    "Category": {},
+    "Change Accent Colour": {},
+    "Change Appearance": {},
+    "Change Density": {},
+    "Change Layout": {},
+    "Change the accent colour to green": {},
+    "Changes the tile colour and glyph": {},
+    "Check Step": {},
+    "Choose Tasks…": {},
+    "Clear Conversation": {},
+    "Clear the conversation?": {},
+    "Collections": {},
+    "Colour": {},
+    "Comfortable": {},
+    "Compact": {},
+    "Complete": {},
+    "Completed": {},
+    "Completed tasks appear here.": {},
+    "Conversation Options": {},
+    "Created %@": {},
+    "Cyan": {},
+    "Delete": {},
+    "Delete %lld Tasks?": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Delete %lld Task?"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Delete %lld Tasks?"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Delete Step": {},
+    "Design": {},
+    "Details": {},
+    "Development": {},
+    "Done": {},
+    "Drop tasks here": {},
+    "Duplicate": {},
+    "Edit": {},
+    "Edit Appearance": {},
+    "Edit Task": {},
+    "Everything Else": {},
+    "Fail": {},
+    "Find tasks matching": {},
+    "Focus": {},
+    "Glyph": {},
+    "Gray": {},
+    "Green": {},
+    "Grid": {},
+    "High": {},
+    "High Priority": {},
+    "High priority": {},
+    "I can prioritise, add, complete and recolour tasks, or change the layout.": {},
+    "I can’t help with that request. Try rephrasing it as something to do with your tasks.": {},
+    "I can’t help with that. I can organise, add, complete and prioritise your tasks.": {},
+    "I don’t support this language yet. Try writing in a language Apple Intelligence supports.": {},
+    "Indigo": {},
+    "It understands short, simple requests.": {},
+    "I’m getting a lot of requests right now. Wait a moment and try again.": {},
+    "I’m still working on your last request.": {},
+    "Layout": {},
+    "List": {},
+    "List Density": {},
+    "Manual": {},
+    "Mark as Done": {},
+    "Mark as Not Done": {},
+    "Mint": {},
+    "More": {},
+    "More Actions": {},
+    "Move": {},
+    "Move Step": {},
+    "Move to…": {},
+    "New Task": {},
+    "Newest First": {},
+    "No Priority Tasks": {},
+    "No Tasks": {},
+    "No task matches “%@”.": {},
+    "Normal": {},
+    "Normal priority": {},
+    "Notes": {},
+    "Nothing Done Yet": {},
+    "Open": {},
+    "Open Settings": {},
+    "Operations": {},
+    "Orange": {},
+    "Pink": {},
+    "Prioritise": {},
+    "Prioritise a task to see it here.": {},
+    "Prioritise all testing tasks and use List view": {},
+    "Prioritise the network refactor and switch to Focus": {},
+    "Prioritise the tasks that matter most and they’ll appear here.": {},
+    "Priority": {},
+    "Purple": {},
+    "Red": {},
+    "Remove Priority": {},
+    "Remove priority from": {},
+    "Rename Step": {},
+    "Reopen": {},
+    "Search": {},
+    "Search Glyphs": {},
+    "Select": {},
+    "Send": {},
+    "Sends this request to the assistant": {},
+    "Set accent colour to": {},
+    "Settings": {},
+    "Share": {},
+    "Show my tasks as a Board": {},
+    "Shows this task on the board": {},
+    "Simulated": {},
+    "Simulated assistant": {},
+    "Something went wrong, and nothing was changed. Please try again.": {},
+    "Sort By": {},
+    "Step": {},
+    "Steps": {},
+    "Stop": {},
+    "Stopped": {},
+    "Suggestions": {},
+    "Switch layout to": {},
+    "Task Deleted": {},
+    "Tasks": {},
+    "Teal": {},
+    "Testing": {},
+    "That took too long. Please try again.": {},
+    "The assistant runs entirely on device. Nothing you type leaves your iPhone or iPad.": {},
+    "The assistant runs on device with Apple Intelligence.": {},
+    "The change couldn’t be made.": {},
+    "The on-device model isn’t ready yet. Try again in a little while.": {},
+    "The simulated assistant is on for testing.": {},
+    "The simulated assistant is turned on for testing.": {},
+    "The title was empty.": {},
+    "This conversation got too long, so I started a fresh one and kept a short summary. Please send that again.": {},
+    "Tile Contrast": {},
+    "Title": {},
+    "Titles, notes and steps": {},
+    "Toggle Priority": {},
+    "Undo": {},
+    "Use Category Default": {},
+    "Version": {},
+    "View Options": {},
+    "Yellow": {},
+    "You can also switch layouts from the View Options menu on the board.": {},
+    "You can undo this with Undo or by shaking your device.": {},
+    "You: %@": {},
+    "Your tasks and layout won’t change.": {},
+    "added by assistant": {},
+    "as": {},
+    "completed": {},
+    "high priority": {},
+    "in": {},
+    "to": {},
+    "“%@” matches %@.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "“%1$@” matches %2$@."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

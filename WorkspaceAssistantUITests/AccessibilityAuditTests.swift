@@ -6,6 +6,11 @@ final class AccessibilityAuditTests: XCTestCase {
 
     override func setUp() {
         continueAfterFailure = true
+    }
+
+    /// Launches the app with in-memory storage and the scripted assistant.
+    @MainActor
+    private func launch() {
         app = XCUIApplication()
         app.launchArguments = ["-UITestScriptedAssistant"]
         app.launch()
@@ -47,18 +52,23 @@ final class AccessibilityAuditTests: XCTestCase {
 
     @MainActor
     func testBoardGrid() {
+        launch()
         audit("grid")
     }
 
     @MainActor
     func testTaskDetail() {
+        launch()
         app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Refactor Network Layer")).firstMatch.tap()
         XCTAssertTrue(app.descendants(matching: .any)["taskTitleField"].firstMatch.waitForExistence(timeout: 5))
+        // Let the push transition finish (the tab bar and assistant pill hide) before auditing.
+        _ = app.buttons["askAssistantButton"].waitForNonExistence(timeout: 3)
         audit("detail")
     }
 
     @MainActor
     func testAssistantWithTranscript() {
+        launch()
         app.buttons["askAssistantButton"].firstMatch.tap()
         app.buttons["Prioritise the network refactor and switch to Focus"].firstMatch.tap()
         let block = app.descendants(matching: .any)
@@ -74,6 +84,7 @@ final class AccessibilityAuditTests: XCTestCase {
 
     @MainActor
     func testOtherLayouts() {
+        launch()
         for layout in ["Focus", "List", "Board"] {
             app.buttons["View Options"].firstMatch.tap()
             app.buttons[layout].firstMatch.tap()

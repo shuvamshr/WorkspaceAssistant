@@ -32,60 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WorkspaceDomainTests"
-               BuildableName = "WorkspaceDomainTests"
-               BlueprintName = "WorkspaceDomainTests"
-               ReferencedContainer = "container:Packages/WorkspaceKit">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WorkspacePersistenceTests"
-               BuildableName = "WorkspacePersistenceTests"
-               BlueprintName = "WorkspacePersistenceTests"
-               ReferencedContainer = "container:Packages/WorkspaceKit">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WorkspaceAgentTests"
-               BuildableName = "WorkspaceAgentTests"
-               BlueprintName = "WorkspaceAgentTests"
-               ReferencedContainer = "container:Packages/WorkspaceKit">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DesignSystemTests"
-               BuildableName = "DesignSystemTests"
-               BlueprintName = "DesignSystemTests"
-               ReferencedContainer = "container:Packages/WorkspaceKit">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BoardFeatureTests"
-               BuildableName = "BoardFeatureTests"
-               BlueprintName = "BoardFeatureTests"
-               ReferencedContainer = "container:Packages/WorkspaceKit">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AssistantFeatureTests"
-               BuildableName = "AssistantFeatureTests"
-               BlueprintName = "AssistantFeatureTests"
-               ReferencedContainer = "container:Packages/WorkspaceKit">
+               BlueprintIdentifier = "000000000000000400000000"
+               BuildableName = "WorkspaceAssistantTests.xctest"
+               BlueprintName = "WorkspaceAssistantTests"
+               ReferencedContainer = "container:WorkspaceAssistant.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
