@@ -9,10 +9,13 @@ Rules for future sessions. The full build brief lives with the project owner; th
   `LanguageModelSession.GenerationError` in favour of `LanguageModelError` / `LanguageModelSession.Error`; handle both.
 
 ## Architecture
-- App target is a thin composition root. Code lives in `Packages/WorkspaceKit`.
-- `WorkspaceDomain`, `WorkspacePersistence`, `WorkspaceAgent` are nonisolated by default (be explicit).
-  UI modules (`DesignSystem`, `*Feature`) default to `MainActor` isolation.
-- Features never import FoundationModels or SwiftData; they use protocols from Domain (`AssistantEngine`, `TaskRepository`).
+- A single SwiftUI app target (no local packages), organised by folder:
+  `App/` (composition root), `Domain/`, `Persistence/`, `Agent/`, `DesignSystem/`, `Features/{Board,Assistant,Settings}/`, `Resources/`.
+  Tests live in `WorkspaceAssistantTests/` (one hosted unit-test target) and `WorkspaceAssistantUITests/`.
+- Default actor isolation is Swift's standard (nonisolated). Views get `MainActor` from their protocols;
+  stores, models and engines are annotated `@MainActor` explicitly.
+- Keep the layering by convention: only `Agent/` imports FoundationModels and only `Persistence/` imports SwiftData.
+  Features talk to protocols in `Domain/` (`AssistantEngine`, `TaskRepository`).
 - **Every mutation goes through `WorkspaceStore.perform(_:actor:)`** with a `WorkspaceCommand`. Each command registers
   its inverse with the `UndoManager`. New capability = command case + handler (+ optional tool).
 - Tools are thin adapters: `@Generable` args → `WorkspaceCommand` → truthful result string. Never claim success a command didn't produce.
@@ -29,7 +32,7 @@ Rules for future sessions. The full build brief lives with the project owner; th
 - Swift Testing for unit tests. UI tests launch with `-UITestScriptedAssistant`.
 - No warnings, no force unwraps outside tests, no `print` (use `Logger`). One primary type per file; doc comment on public types.
 - After each change: build and run tests on an iPhone simulator; report honestly.
-- Strings in package modules use `bundle: .module` and the module's `Localizable.xcstrings`.
+- All strings live in `Resources/Localizable.xcstrings` (main bundle).
 
 ## Current focus & workflow notes
 - **iPhone only.** No iPad-specific UI; the root always uses the tab bar and an assistant sheet. Phase 7 (intents, widget, sync) is on hold.

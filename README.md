@@ -16,22 +16,22 @@ a block-based editor, and assistant tool calls rendered as Shortcuts-style actio
 ## Layout
 
 ```
-WorkspaceAssistant/          App target: @main, composition root, assets
-WorkspaceAssistantUITests/   UI tests (run with -UITestScriptedAssistant)
-Packages/WorkspaceKit/
-  Sources/
-    WorkspaceDomain/         Models, commands, store, protocols (no SwiftUI / SwiftData)
-    WorkspacePersistence/    SwiftData repository + UserDefaults preferences
-    WorkspaceAgent/          Foundation Models engine, tools, scripted engine
-    DesignSystem/            Tokens, tile colours, reusable components
-    BoardFeature/            Board, four layouts, task editor, search, collections
-    AssistantFeature/        Assistant transcript, composer, suggestions
-    SettingsFeature/         Settings form
-  Tests/                     Swift Testing suites per module
-docs/                        Accessibility report and other notes
+WorkspaceAssistant/            The app (single target)
+  App/                         @main, composition root, root view, commands
+  Domain/                      Models, commands, store, protocols (no SwiftUI / SwiftData)
+  Persistence/                 SwiftData repository + UserDefaults preferences
+  Agent/                       Foundation Models engine, tools, scripted engine
+  DesignSystem/                Tokens, tile colours, reusable components
+  Features/Board/              Board, four layouts, task editor, search, collections
+  Features/Assistant/          Assistant transcript, composer, suggestions
+  Features/Settings/           Settings form
+  Resources/                   Assets and the String Catalog
+WorkspaceAssistantTests/       Swift Testing unit tests
+WorkspaceAssistantUITests/     UI tests (run with -UITestScriptedAssistant)
+docs/                          Accessibility report, app icon
 ```
 
-Dependency direction: `Domain ← Persistence`, `Domain ← Agent`, `Domain + DesignSystem ← Features`, `everything ← App`.
+Layering (by convention): `Domain ← Persistence`, `Domain ← Agent`, `Domain + DesignSystem ← Features`, `everything ← App`.
 
 ## Build and test
 
@@ -40,4 +40,4 @@ xcodebuild -project WorkspaceAssistant.xcodeproj -scheme WorkspaceAssistant \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
-The shared scheme runs every package test target plus the UI tests.
+The shared scheme runs the unit tests and the UI tests.

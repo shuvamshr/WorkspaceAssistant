@@ -70,7 +70,7 @@ Legend: ✅ verified · 🔍 verified by code review only · ⚠️ known limita
 - 🔍 Pointer: tiles use `.hoverEffect(.lift)`; rows and buttons use the system hover effects.
 
 ### Localisation
-- ✅ String Catalogs are populated (215 keys across modules) with English plural rules for counted strings.
+- ✅ The String Catalog is populated (191 keys) with English plural rules for counted strings.
   Run `scripts/sync-strings.sh` after command-line builds; Xcode syncs them automatically when building in the IDE.
 - ✅ RTL layouts render correctly (design-system gallery reviewed in dark + RTL).
 - ⚠️ The simulated assistant's replies are English-only. The real model replies in the user's language.
