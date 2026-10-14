@@ -61,6 +61,8 @@ final class AccessibilityAuditTests: XCTestCase {
         launch()
         app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Refactor Network Layer")).firstMatch.tap()
         XCTAssertTrue(app.descendants(matching: .any)["taskTitleField"].firstMatch.waitForExistence(timeout: 5))
+        // Let the push transition finish (the tab bar and assistant pill hide) before auditing.
+        _ = app.buttons["askAssistantButton"].waitForNonExistence(timeout: 3)
         audit("detail")
     }
 

@@ -82,4 +82,5 @@ Legend: ✅ verified · 🔍 verified by code review only · ⚠️ known limita
 4. Editor title squeezed beside the glyph at accessibility sizes → stacked header.
 5. Editor content under the floating tab bar → tab bar hidden while editing.
 6. Simulated-assistant banner and Board column used translucent fills → opaque fills; banner text uses the primary colour.
-7. iPad inspector reopened on launch (system restoration) → presentation bindings accept dismissals only.
+7. iPad inspector reopened on launch (system restoration) → fixed, later removed when the app went iPhone-only.
+8. "Ask Assistant…" pill and the editor's "Created…" footer were borderline grey → primary colour; the editor audit now waits for its push transition.

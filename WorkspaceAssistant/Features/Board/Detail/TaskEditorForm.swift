@@ -90,7 +90,6 @@ struct TaskEditorForm: View {
                     }
                 }
                 .font(.footnote)
-                .foregroundStyle(.secondary)
                 .listRowBackground(Color.clear)
                 .accessibilityElement(children: .combine)
             }

@@ -15,8 +15,9 @@ public struct AskAssistantAccessory: View {
                 Image(systemName: "sparkles")
                     .foregroundStyle(.tint)
                     .symbolEffect(.pulse, isActive: model.phase == .responding)
+                // Primary colour: the pill floats over arbitrary content, so secondary grey can fail contrast.
                 Text(model.phase == .responding ? String(localized: "Assistant is working…") : String(localized: "Ask Assistant…"))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.primary)
                 Spacer(minLength: 0)
                 if model.simulationReason != nil {
                     Text("Simulated")
