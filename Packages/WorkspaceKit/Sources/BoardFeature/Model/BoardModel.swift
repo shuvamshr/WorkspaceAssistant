@@ -18,8 +18,10 @@ public final class BoardModel {
     }
     /// Selected task ids in multi-select mode.
     public var selection: Set<UUID> = []
-    /// Current ordering.
-    public var sort: BoardSort = .manual
+    /// Current ordering. Persisted when the model was created with `sortStorage`.
+    public var sort: BoardSort = .manual {
+        didSet { sortStorage?.set(sort.rawValue, forKey: Self.sortKey) }
+    }
     /// Task whose appearance picker is showing.
     public var appearanceTaskID: UUID?
     /// Deletion awaiting confirmation.
@@ -33,8 +35,16 @@ public final class BoardModel {
     /// Set when a detail view should close because its task was deleted.
     public private(set) var deletedTaskIDs: Set<UUID> = []
 
-    public init(store: WorkspaceStore) {
+    @ObservationIgnored private let sortStorage: UserDefaults?
+    private static let sortKey = "board.sort"
+
+    /// - Parameter sortStorage: Where to remember the sort order across launches (`nil` = don't persist).
+    public init(store: WorkspaceStore, sortStorage: UserDefaults? = nil) {
         self.store = store
+        self.sortStorage = sortStorage
+        if let raw = sortStorage?.string(forKey: Self.sortKey), let saved = BoardSort(rawValue: raw) {
+            sort = saved
+        }
     }
 
     // MARK: - Queries

@@ -34,12 +34,7 @@ enum TaskEdit: Equatable {
         case let .deleteSteps(offsets):
             task.steps = task.steps.enumerated().filter { !offsets.contains($0.offset) }.map(\.element)
         case let .moveSteps(offsets, destination):
-            var steps = task.steps
-            let moving = offsets.filter { steps.indices.contains($0) }.map { steps[$0] }
-            let insertAt = destination - offsets.count(where: { $0 < destination })
-            steps = steps.enumerated().filter { !offsets.contains($0.offset) }.map(\.element)
-            steps.insert(contentsOf: moving, at: min(max(insertAt, 0), steps.count))
-            task.steps = steps
+            task.steps.moveElements(fromOffsets: offsets, toOffset: destination)
         }
     }
 

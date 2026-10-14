@@ -2,7 +2,7 @@ import os
 
 /// Shared `Logger` categories for the workspace modules.
 public enum Log {
-    static let subsystem = "com.example.WorkspaceAssistant"
+    static let subsystem = "au.edu.uts.WorkspaceAssistant"
     /// Store and command processing.
     public static let store = Logger(subsystem: subsystem, category: "store")
     /// Persistence and storage.

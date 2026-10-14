@@ -10,7 +10,7 @@ a block-based editor, and assistant tool calls rendered as Shortcuts-style actio
 ## Requirements
 
 - Xcode 27, Swift 6 (strict concurrency: complete)
-- iOS 26.0+ (iPhone and iPad)
+- iOS 26.0+ (iPhone)
 - Apple Intelligence is optional. Without it, a clearly-labelled scripted assistant stands in.
 
 ## Layout

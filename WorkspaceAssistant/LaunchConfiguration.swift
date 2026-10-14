@@ -1,6 +1,7 @@
 import Foundation
 
 /// Behaviour switches read from launch arguments (used by UI tests and design review).
+/// They only take effect in DEBUG builds; release builds always use real storage and the app UI.
 struct LaunchConfiguration {
     /// `-UITestScriptedAssistant`: in-memory storage and the scripted assistant.
     let isUITest: Bool
@@ -8,8 +9,13 @@ struct LaunchConfiguration {
     let showsDesignGallery: Bool
 
     init(arguments: [String] = ProcessInfo.processInfo.arguments) {
+        #if DEBUG
         isUITest = arguments.contains("-UITestScriptedAssistant")
         showsDesignGallery = arguments.contains("-DesignGallery")
+        #else
+        isUITest = false
+        showsDesignGallery = false
+        #endif
     }
 
     /// Whether to avoid touching persistent storage.

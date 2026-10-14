@@ -33,7 +33,7 @@ final class AppDependencies {
         }
         store = WorkspaceStore(repository: repository, preferencesStore: preferences)
         store.undoActionName = UndoActionNames.name(for:)
-        board = BoardModel(store: store)
+        board = BoardModel(store: store, sortStorage: launch.usesEphemeralStorage ? nil : .standard)
 
         let engine: any AssistantEngine = launch.isUITest
             ? ScriptedEngine(executor: store, reason: .simulatedByConfiguration, wordDelay: .zero)

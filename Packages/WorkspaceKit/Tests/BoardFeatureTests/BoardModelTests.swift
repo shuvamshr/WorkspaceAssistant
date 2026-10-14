@@ -143,3 +143,18 @@ struct BoardModelTests {
         #expect(model.highlightTrigger(for: id) == store.lastAssistantChange?.id)
     }
 }
+
+@MainActor
+@Suite("BoardModel sort persistence")
+struct BoardSortPersistenceTests {
+    @Test func sortIsRestoredFromStorage() throws {
+        let suite = "BoardSortPersistenceTests.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let store = WorkspaceStore(repository: InMemoryTaskRepository(), preferencesStore: InMemoryPreferencesStore())
+
+        BoardModel(store: store, sortStorage: defaults).sort = .title
+        #expect(BoardModel(store: store, sortStorage: defaults).sort == .title)
+        #expect(BoardModel(store: store).sort == .manual)
+    }
+}

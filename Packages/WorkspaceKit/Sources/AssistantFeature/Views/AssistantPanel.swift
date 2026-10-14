@@ -4,7 +4,7 @@ import UIKit
 import WorkspaceDomain
 
 /// The assistant's content: availability banner, transcript (or suggestions) and the composer.
-/// Hosted in a sheet on iPhone and an inspector on iPad.
+/// Hosted in the assistant sheet.
 public struct AssistantPanel: View {
     private let onSelectTask: (UUID) -> Void
     @Environment(AssistantModel.self) private var model
